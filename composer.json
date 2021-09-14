@@ -1,0 +1,19 @@
+{
+    "name": "xsdk/xopenid",
+    "description": "the sdk of xopenid",
+    "type": "library",
+    "license": "Apache2.0",
+    "autoload": {
+        "psr-4": {
+            "Xsdk\\Xopenid\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "xcsoft",
+            "email": "email@xcsoft.top"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
