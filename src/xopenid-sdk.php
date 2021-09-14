@@ -7,7 +7,7 @@
  * @author xcsoft <contact@xcsoft.top>
  */
 
-namespace Xsdk\Xopenid;
+namespace Xsdk;
 
 class Xopenid
 {
