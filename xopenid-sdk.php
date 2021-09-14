@@ -9,7 +9,7 @@
 
 namespace Xsdk;
 
-class XopenId
+class Xopenid
 {
     private static $api = 'https://9420.ltd/';
 
