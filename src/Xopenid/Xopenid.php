@@ -7,9 +7,9 @@
  * @author xcsoft <contact@xcsoft.top>
  */
 
-namespace Xsdk;
+namespace Xsdk\Xopenid;
 
-class Xopenid
+class phpSdk
 {
     private static $api = 'https://9420.ltd/';
 
