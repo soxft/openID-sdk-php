@@ -8,12 +8,12 @@
             "Xsdk\\Xopenid\\": "src/"
         }
     },
-    "authors": [
-        {
-            "name": "xcsoft",
-            "email": "email@xcsoft.top"
-        }
-    ],
+    "authors": [{
+        "name": "xcsoft",
+        "email": "email@xcsoft.top"
+    }],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "php": ">=7.0"
+    }
 }
