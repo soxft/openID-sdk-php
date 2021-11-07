@@ -8,7 +8,7 @@
 
 namespace soxft;
 
-class openIdSdk
+class OpenIdSdk
 {
     private static $api = 'https://9420.ltd/';
 
