@@ -24,7 +24,7 @@
 
     $xopenid = new OpenIdSdk('appid', 'app_secret');
 
-    $xopenid->Jump('redirect_uri'); //该方法将会直接跳转至授权界面, 不用让用户点击
+    $xopenid->jump('redirect_uri'); //该方法将会直接跳转至授权界面, 不用让用户点击
 ?>
 ```
 - 在上述的代码中 `appid` 代表您的应用ID,`app_secret`代表您的应用密钥,`redirect_uri`代表您的回调网址
