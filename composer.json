@@ -12,7 +12,7 @@
         "name": "xcsoft",
         "email": "email@xcsoft.top"
     }],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "php": ">=7.0"
     }
