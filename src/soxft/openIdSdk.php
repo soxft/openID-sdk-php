@@ -1,15 +1,14 @@
 <?php
 
 /**
- * SDK FOR X openID 
+ * SDK of XopenID 
  * @version v1.0
- * @lang php
  * @author xcsoft <contact@xcsoft.top>
  */
 
-namespace Xsdk;
+namespace soxft;
 
-class XopenId
+class openIdSdk
 {
     private static $api = 'https://9420.ltd/';
 
@@ -25,15 +24,18 @@ class XopenId
 
     /**
      * 跳转至授权界面
+     * 
      * @param string $redirect_uri 回调链接
+     * @param void
      */
-    public function Jump(string $redirect_uri)
+    public function jump(string $redirect_uri): void
     {
         header("Location: " . self::$api . 'v1/connect.php?appid=' . $this->appid . '&redirect_uri=' . urlencode($redirect_uri));
     }
 
     /**
      * 请求用户信息
+     * 
      * @param string $token GET参数中的token
      * @return array 用户信息
      */
@@ -50,7 +52,7 @@ class XopenId
         return json_decode($res, true);
     }
 
-    private function httpPost(string $url, array $param)
+    private function httpPost(string $url, array $param): string
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

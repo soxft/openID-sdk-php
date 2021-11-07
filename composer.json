@@ -1,11 +1,11 @@
 {
-    "name": "xsdk/xopenid",
-    "description": "the sdk of xopenid",
+    "name": "soxft/openidsdk",
+    "description": "sdk of xopenid",
     "type": "library",
     "license": "Apache-2.0",
     "autoload": {
         "psr-4": {
-            "Xsdk\\": "src/Xopenid"
+            "soxft\\": "src/soxft"
         }
     },
     "authors": [{
