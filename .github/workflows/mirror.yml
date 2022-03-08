@@ -28,16 +28,3 @@ jobs:
             git@gitlab.com:soxft/openIdSdk.git
           ssh_private_key:
             ${{ secrets.KEY }}
-  
-  mirror_to_gitea:
-    runs-on: ubuntu-18.04
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v1
-      - name: 'Mirror to gitea'
-        uses: pixta-dev/repository-mirroring-action@v1
-        with:
-          target_repo_url:
-            ${{ secrets.GITEA_URI }}
-          ssh_private_key:
-            ${{ secrets.KEY }}
