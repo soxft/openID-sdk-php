@@ -1,6 +1,6 @@
 {
     "name": "soxft/openidsdk",
-    "description": "sdk of xopenid",
+    "description": "sdk of x openID",
     "type": "library",
     "license": "Apache-2.0",
     "autoload": {
@@ -15,6 +15,6 @@
     "minimum-stability": "dev",
     "prefer-stable": "true",
     "require": {
-        "php": ">=7.0"
+        "php": ">=7.1"
     }
 }
