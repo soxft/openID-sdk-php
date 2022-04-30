@@ -43,7 +43,7 @@ class OpenIdSdk
      */
     public function jump(string $redirect_uri): void
     {
-        header("Location: " . self::$api . 'v2/connect?appid=' . $this->appid . '&redirect_uri=' . urlencode($redirect_uri));
+        header("Location: " . self::$api . 'v1/connect?appid=' . $this->appid . '&redirect_uri=' . urlencode($redirect_uri));
     }
 
     /**
@@ -60,7 +60,7 @@ class OpenIdSdk
             'app_secret' => $this->app_secret,
             'token' => $token,
         ];
-        $res = $this->httpPost(self::$api . 'v2/userInfo', $param);
+        $res = $this->httpPost(self::$api . 'v1/userInfo', $param);
         if (empty($res)) return ['code' => 102, 'msg' => 'http request error', 'data' => []];
         return json_decode($res, true);
     }
