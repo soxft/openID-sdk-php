@@ -54,14 +54,14 @@ class OpenIdSdk
      */
     public function getUserInfo(string $token): array
     {
-        if (empty($token)) return ['code' => 101, 'msg' => 'token cant be empty', 'data' => []];
+        if (empty($token)) return ['success' => false, 'msg' => 'token cant be empty', 'data' => []];
         $param = [
             'appid' => $this->appid,
             'app_secret' => $this->app_secret,
             'token' => $token,
         ];
         $res = $this->httpPost(self::$api . 'api/v1/info', $param);
-        if (empty($res)) return ['code' => 102, 'msg' => 'http request error', 'data' => []];
+        if (empty($res)) return ['success' => false, 'msg' => 'http request error', 'data' => []];
         return json_decode($res, true);
     }
 
