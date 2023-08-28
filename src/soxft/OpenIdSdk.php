@@ -13,7 +13,7 @@ class OpenIdSdk
     /**
      * @var string api
      */
-    private static $api = 'https://9420.ltd/';
+    private static $api = 'https://9420.ltd/api';
 
     /**
      * @var string
@@ -43,7 +43,18 @@ class OpenIdSdk
      */
     public function jump(string $redirect_uri): void
     {
-        header("Location: " . self::$api . 'api/v1/login?appid=' . $this->appid . '&redirect_uri=' . urlencode($redirect_uri));
+        header("Location: " . self::$api . '/v1/login?appid=' . $this->appid . '&redirect_uri=' . urlencode($redirect_uri));
+    }
+
+    /**
+     * 获取授权链接
+     *
+     * @param string $redirect_uri
+     * @return string
+     */
+    public function getAuthUrl(string $redirect_uri): string
+    {
+        return self::$api . '/v1/login?appid=' . $this->appid . '&redirect_uri=' . urlencode($redirect_uri);
     }
 
     /**
@@ -54,21 +65,29 @@ class OpenIdSdk
      */
     public function getUserInfo(string $token): array
     {
-        if (empty($token)) return ['success' => false, 'msg' => 'token cant be empty', 'data' => []];
+        if ($token === "") return $this->response(false, 'token is empty', []);
+
         $param = [
             'appid' => $this->appid,
             'app_secret' => $this->app_secret,
             'token' => $token,
         ];
-        $res = $this->httpPost(self::$api . 'api/v1/info', $param);
-        if (empty($res)) return ['success' => false, 'msg' => 'http request error', 'data' => []];
-        return json_decode($res, true);
+
+        // http request
+        $res = $this->httpPost('/v1/info', $param);
+        if ($res === "" || $res === null) return $this->response(false, 'http request error', []);
+
+        // unmarshal json
+        $res_unmarshal = json_decode($res, true);
+
+        if ($res_unmarshal['success'] === false) return $this->response(false, $res_unmarshal['msg'], []);
+        return $this->response(true, 'success', $res_unmarshal['data']);
     }
 
     private function httpPost(string $url, array $param): string
     {
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_URL, self::$api . $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
@@ -77,5 +96,14 @@ class OpenIdSdk
         $output = curl_exec($ch);
         curl_close($ch);
         return $output;
+    }
+
+    private function response(bool $success, string $msg, array $data): array
+    {
+        return [
+            'success' => $success,
+            'msg' => $msg,
+            'data' => $data,
+        ];
     }
 }
