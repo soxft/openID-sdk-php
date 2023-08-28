@@ -80,7 +80,7 @@ class OpenIdSdk
         // unmarshal json
         $res_unmarshal = json_decode($res, true);
 
-        if ($res_unmarshal['success'] === false) return $this->response(false, $res_unmarshal['msg'], []);
+        if ($res_unmarshal['success'] === false) return $this->response(false, $res_unmarshal['message'], []);
         return $this->response(true, 'success', $res_unmarshal['data']);
     }
 
